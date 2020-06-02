@@ -28,7 +28,7 @@ Widget _listarFacts() {
           final elemento = snapshot.data;
       
           return ListView.builder(
-            itemCount: elemento.length,
+            itemCount: 5,
             itemBuilder: (context, i) => _crearItem(context, elemento[i] ),
           );
 
@@ -54,7 +54,7 @@ Widget _listarFacts() {
             ListTile(
               leading: Icon(Icons.archive),
               title: Text('${ elemento.text }'),
-              subtitle: Text( elemento.id ),
+              subtitle: Text( elemento.type ),
               
               
             ),
