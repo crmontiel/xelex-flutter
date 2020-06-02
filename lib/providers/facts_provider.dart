@@ -1,20 +1,21 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-class ProductosHttp{
+
+class FactsProvider{
 
   final String _url='https://cat-fact.herokuapp.com/facts';
 
- Future<bool> crearProducto(data)async {
+ Future<bool> listar(  ) async {
+    
+    
+    final resp = await http.get( _url) ;
 
-  final resp=await http.get(_url);
+    final decodedData = json.decode(resp.body);
 
-   final decodeData=await json.decode(resp.body);
-  
-  print(decodeData);
-  
-  return true;
+    print( decodedData );
 
+    return true;
 
   }
   
