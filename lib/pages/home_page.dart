@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xelex/models/item_model.dart';
 import 'package:xelex/providers/facts_provider.dart';
 
 
@@ -20,7 +21,7 @@ Widget _listarFacts() {
 
     return FutureBuilder(
       future: factsProvider.listar(),
-      builder: (BuildContext context, AsyncSnapshot<List> snapshot) async {
+      builder: (AsyncSnapshot<List<ItemModel>> snapshot,BuildContext context)  {
         if ( snapshot.hasData ) {
 
           final elemento = snapshot.data;
