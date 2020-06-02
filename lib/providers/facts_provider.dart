@@ -1,22 +1,32 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:xelex/models/item_model.dart';
 
 class FactsProvider{
 
   final String _url='https://cat-fact.herokuapp.com/facts';
 
- Future<bool> listar(  ) async {
+ Future<List> listar(  ) async {
     
-    
-    final resp = await http.get( _url) ;
+ 
+    final resp = await http.get(_url);
 
-    final decodedData = json.decode(resp.body)['all'].map((data) => data.toList());
+    final Map<String, dynamic> decodedData = json.decode(resp.body);
 
-    print( decodedData );
+    final List<ItemModel> productos = new List();
 
-    return true;
 
+    if ( decodedData == null ) {
+    return [];
+    }
+
+    decodedData.forEach( ( id, prod ){
+
+   
+    });
+
+    return productos;
   }
   
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:xelex/models/item_model.dart';
 import 'package:xelex/providers/facts_provider.dart';
 
 
@@ -8,6 +7,8 @@ class HomePage extends StatelessWidget {
 final factsProvider= new FactsProvider();
   @override
   Widget build(BuildContext context) {
+
+    
 
      return Scaffold(
       appBar: AppBar(
@@ -21,7 +22,7 @@ Widget _listarFacts() {
 
     return FutureBuilder(
       future: factsProvider.listar(),
-      builder: (AsyncSnapshot<List<ItemModel>> snapshot,BuildContext context)  {
+      builder: (BuildContext context, snapshot)  {
         if ( snapshot.hasData ) {
 
           final elemento = snapshot.data;
