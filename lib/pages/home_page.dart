@@ -12,37 +12,56 @@ final factsProvider= new FactsProvider();
       appBar: AppBar(
         title: Text('Home')
       ),
-      body: Container(),
+      body: _listarFacts(),
       );
   }
 
-Widget _listarFacts(){
-  return FutureBuilder(
-    future: factsProvider.listar(),
-    builder: (BuildContext context, AsyncSnapshot<List> snapshot){
-      if ( snapshot.hasData ) {
+Widget _listarFacts() {
 
-          final productos = snapshot.data;
+    return FutureBuilder(
+      future: factsProvider.listar(),
+      builder: (BuildContext context, AsyncSnapshot<List> snapshot) async {
+        if ( snapshot.hasData ) {
 
+          final elemento = snapshot.data;
+      
           return ListView.builder(
-            itemCount: productos.length,
-            itemBuilder: (context, i) => _crearItem(context, productos[i] ),
+            itemCount: elemento.length,
+            itemBuilder: (context, i) => _crearItem(context, elemento[i] ),
           );
 
         } else {
           return Center( child: CircularProgressIndicator());
         }
-    },
-  );
-
-}
-
-Widget _crearItem(BuildContext context,  data ) {
-
-    return Dismissible();    
-
+      },
+    );
   }
 
+  Widget _crearItem(BuildContext context, elemento){
+
+
+    return Dismissible(
+      key: UniqueKey(),
+      background: Container(
+        color: Colors.red,
+      ),
+      onDismissed: ( direccion ){},
+      child: Card(
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              title: Text('${ elemento.text } - ${ elemento.upvotes }'),
+              subtitle: Text( elemento.id ),
+            ),
+
+          ],
+        ),
+      )
+    );
+
+
+
+  }
 
 
 }

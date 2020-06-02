@@ -11,7 +11,7 @@ class FactsProvider{
     
     final resp = await http.get( _url) ;
 
-    final decodedData = json.decode(resp.body);
+    final decodedData = json.decode(resp.body)['all'].map((data) => data.toList());
 
     print( decodedData );
 
