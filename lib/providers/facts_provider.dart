@@ -12,7 +12,7 @@ class FactsProvider{
  
     final resp = await http.get(_url);
 
-    final Map<String, dynamic> decodedData = json.decode(resp.body);
+    final List<String, dynamic> decodedData = json.decode(resp.body)['all'];
 
     final List<ItemModel> productos = new List();
 
@@ -21,7 +21,11 @@ class FactsProvider{
     return [];
     }
 
-    decodedData.forEach( ( id, prod ){
+    decodedData.forEach( (item){
+      final prodTemp = ItemModel.fromJson(item);
+
+    //  print(item['_id']);
+     productos.add( prodTemp );
 
    
     });

@@ -30,7 +30,7 @@ class ItemModel {
         id         : json["_id"],
         text     : json["text"],
         type      : json["type"],
-        upvotes : json["upvotes"],
+        // upvotes : json["upvotes"],
         userUpvoted    : json["userUpvoted"],
     );
 
