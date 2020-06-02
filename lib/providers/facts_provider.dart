@@ -12,7 +12,7 @@ class FactsProvider{
  
     final resp = await http.get(_url);
 
-    final List<String, dynamic> decodedData = json.decode(resp.body)['all'];
+    final decodedData = json.decode(resp.body)['all'];
 
     final List<ItemModel> productos = new List();
 

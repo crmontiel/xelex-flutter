@@ -52,10 +52,13 @@ Widget _listarFacts() {
         child: Column(
           children: <Widget>[
             ListTile(
-              title: Text('${ elemento.text } - ${ elemento.upvotes }'),
+              leading: Icon(Icons.archive),
+              title: Text('${ elemento.text }'),
               subtitle: Text( elemento.id ),
+              
+              
             ),
-
+             
           ],
         ),
       )
